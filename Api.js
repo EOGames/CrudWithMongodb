@@ -23,6 +23,20 @@ app.post('/', async(req,res)=>
    res.send(result);
 });
 
+app.put('/',async(req,resp)=>
+{
+    let data = await dbConnect();
+    let result = await data.updateOne(
+        {
+            model: "Vivo V11"
+        },
+        {
+            $set: req.body
+        }
+    );
+    console.log(result);
+});
+
 app.listen(5001,()=>
 {
     console.log("Server Running on Port 5001");
